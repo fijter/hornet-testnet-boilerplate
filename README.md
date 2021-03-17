@@ -33,7 +33,7 @@ Now we can create our configuration and docker-compose playbook, simply checkout
 
 ```
 cd ..
-git clone https://github.com/gohornet/hornet.git hornet-docker
+git clone https://github.com/fijter/hornet-testnet-boilerplate.git hornet-docker
 cd hornet-docker
 ```
 
