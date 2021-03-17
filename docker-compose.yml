@@ -1,0 +1,28 @@
+services:
+  hornet:
+    image: hornet:dev
+    hostname: hornet
+    container_name: hornet
+    stdin_open: true
+    tty: true
+    restart: "no"
+    working_dir: /app
+    expose:
+      # dashbboard
+      - "8081"
+      # http rest api
+      - "14265"
+      # libp2p/gossip protocol
+      - "15600"
+      # pprof profiling
+      - "6060"
+      # MQTT
+      - "1883"
+    ports:
+      - "0.0.0.0:15600:15600/tcp"
+      - "0.0.0.0:1883:1883/tcp"
+      - "0.0.0.0:14265:14265/tcp"
+    volumes:
+      - './config.json:/app/config.json:ro'
+      - './peering.json:/app/peering.json'
+      - './data:/tmp'

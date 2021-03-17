@@ -1,0 +1,211 @@
+{
+  "restAPI": {
+    "basicAuth": {
+      "enabled": false,
+      "userName": "",
+      "passwordHash": "",
+      "passwordSalt": ""
+    },
+    "excludeHealthCheckFromAuth": false,
+    "permittedRoutes": [
+      "/health",
+      "/mqtt",
+      "/api/v1/info",
+      "/api/v1/tips",
+      "/api/v1/messages/:messageID",
+      "/api/v1/messages/:messageID/metadata",
+      "/api/v1/messages/:messageID/raw",
+      "/api/v1/messages/:messageID/children",
+      "/api/v1/messages",
+      "/api/v1/milestones/:milestoneIndex",
+      "/api/v1/milestones/:milestoneIndex/utxo-changes",
+      "/api/v1/outputs/:outputID",
+      "/api/v1/addresses/:address",
+      "/api/v1/addresses/:address/outputs",
+      "/api/v1/addresses/ed25519/:address",
+      "/api/v1/addresses/ed25519/:address/outputs",
+      "/api/v1/treasury",
+      "/api/v1/transactions/:transactionID/included-message"
+    ],
+    "whitelistedAddresses": [
+      "127.0.0.1",
+      "::1"
+    ],
+    "bindAddress": "0.0.0.0:14265",
+    "powEnabled": true,
+    "powWorkerCount": 4,
+    "limits": {
+      "bodyLength": "1M",
+      "maxResults": 1000
+    }
+  },
+  "dashboard": {
+    "bindAddress": "0.0.0.0:8081",
+    "dev": false
+  },
+  "db": {
+    "engine": "pebble",
+    "path": "/tmp/testnetdb"
+  },
+  "snapshots": {
+    "depth": 50,
+    "intervalSynced": 200,
+    "intervalUnsynced": 1000,
+    "fullPath": "/tmp/snapshots/full_snapshot.bin",
+    "deltaPath": "/tmp/snapshots/delta_snapshot.bin",
+    "downloadURLs": [
+      {
+        "full": "https://dbfiles.testnet.chrysalis2.com/full_snapshot.bin",
+        "delta": "https://dbfiles.testnet.chrysalis2.com/delta_snapshot.bin"
+      }
+    ]
+  },
+  "pruning": {
+    "enabled": true,
+    "delay": 17500
+  },
+  "protocol": {
+    "networkID": "testnet6",
+    "bech32HRP": "atoi",
+    "minPoWScore": 4000,
+    "milestonePublicKeyCount": 2,
+    "publicKeyRanges": [
+      {
+        "key": "7205c145525cee64f1c9363696811d239919d830ad964b4e29359e6475848f5a",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "key": "e468e82df33d10dea3bd0eadcd7867946a674d207c39f5af4cc44365d268a7e6",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "key": "0758028d34508079ba1f223907ac3bb5ce8f6bdccc6b961c7c85a2f460b30c1d",
+        "start": 0,
+        "end": 0
+      }
+    ]
+  },
+"coordinator": {
+    "stateFilePath": "/tmp/coordinator.state",
+    "interval": "10s",
+    "checkpoints": {
+      "maxTrackedMessages": 10000
+    },
+    "tipsel": {
+      "minHeaviestBranchUnreferencedMessagesThreshold": 20,
+      "maxHeaviestBranchTipsPerCheckpoint": 10,
+      "randomTipsPerCheckpoint": 2,
+      "heaviestBranchSelectionTimeout": "100ms"
+    },
+    "signing": {
+      "provider": "local",
+      "remoteAddress": "localhost:12345"
+    },
+    "quorum": {
+      "enabled": false,
+      "groups": {},
+      "timeout": "2s"
+    }
+  },
+  "receipts": {
+    "backup": {
+      "enabled": false,
+      "folder": "receipts"
+    },
+    "validator": {
+      "validate": false,
+      "api": {
+        "address": "http://localhost:14265",
+        "timeout": "5s"
+      },
+      "coordinator": {
+        "address": "JFQ999DVN9CBBQX9DSAIQRAFRALIHJMYOXAQSTCJLGA9DLOKIWHJIFQKMCQ9QHWW9RXQMDBVUIQNIY9GZ",
+        "merkleTreeDepth": 18
+      }
+    }
+  },
+  "tipsel": {
+    "maxDeltaMsgYoungestConeRootIndexToCMI": 8,
+    "maxDeltaMsgOldestConeRootIndexToCMI": 13,
+    "belowMaxDepth": 15,
+    "nonLazy": {
+      "retentionRulesTipsLimit": 100,
+      "maxReferencedTipAge": "3s",
+      "maxChildren": 2,
+      "spammerTipsThreshold": 0
+    },
+    "semiLazy": {
+      "retentionRulesTipsLimit": 20,
+      "maxReferencedTipAge": "3s",
+      "maxChildren": 2,
+      "spammerTipsThreshold": 30
+    }
+  },
+  "node": {
+    "alias": "hornet-testnet",
+    "profile": "auto",
+    "disablePlugins": [],
+    "enablePlugins": ["MQTT", "Prometheus", "Spammer"]
+  },
+  "p2p": {
+    "bindMultiAddresses": [
+      "/ip4/0.0.0.0/tcp/15600"
+    ],
+    "connectionManager": {
+      "highWatermark": 20,
+      "lowWatermark": 10
+    },
+    "gossipUnknownPeersLimit": 10,
+    "identityPrivateKey": "",
+    "peerStore": {
+      "path": "/tmp/p2pstore"
+    },
+    "reconnectInterval": "30s"
+  },
+  "p2pdisc": {
+    "advertiseInterval": "30s",
+    "maxDiscoveredPeerConns": 4,
+    "rendezvousPoint": "between-two-vertices",
+    "routingTableRefreshPeriod": "60s"
+  },
+  "logger": {
+    "level": "info",
+    "disableCaller": true,
+    "encoding": "console",
+    "outputPaths": [
+      "stdout"
+    ]
+  },
+  "warpsync": {
+    "advancementRange": 150
+  },
+  "spammer": {
+    "message": "Binary is the future.",
+    "index": "HORNET Spammer",
+    "indexSemiLazy": "HORNET Spammer Semi-Lazy",
+    "cpuMaxUsage": 0.8,
+    "mpsRateLimit": 5.0,
+    "workers": 0,
+    "autostart": true
+  },
+  "mqtt": {
+    "bindAddress": "0.0.0.0:1883",
+    "wsPort": 1888
+  },
+  "profiling": {
+    "bindAddress": "0.0.0.0:6060"
+  },
+  "prometheus": {
+    "bindAddress": "0.0.0.0:9311",
+    "fileServiceDiscovery": {
+      "enabled": false,
+      "path": "target.json",
+      "target": "localhost:9311"
+    },
+    "goMetrics": true,
+    "processMetrics": true,
+    "promhttpMetrics": true
+  }
+}
