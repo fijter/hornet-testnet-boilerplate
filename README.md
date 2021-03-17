@@ -37,6 +37,12 @@ git clone https://github.com/fijter/hornet-testnet-boilerplate.git hornet-docker
 cd hornet-docker
 ```
 
+We will use the boilerplate configuration file as a symlink from the git source:
+
+```
+ln -s ../hornet/config_chrysalis_testnet.json ./config.json
+```
+
 Adjust any configuration values to your liking in `docker-compose.yml` and `config.json`
 
 ## Running the node
