@@ -2,7 +2,7 @@
 
 This simple guide provides instructions for running a Hornet node using `docker` and `docker-compose` connected to the Chrysalis testnet.
 
-** Warning: this node boilerplate is not meant for production use; please modify your setup to meet any security requirements. You probably want to add authentication to your web interface or avoid exposing it externally **
+**Warning: this node boilerplate is not meant for production use; please modify your setup to meet any security requirements. You probably want to add authentication to your web interface or avoid exposing it externally**
 
 ## Requirements
 
